@@ -22,10 +22,18 @@ const User = mongoose.model("User", userSchema);
 
 const validate = (data) => {
   const schema = Joi.object({
-    firstName: Joi.string().required().label("First Name"),
-    lastName: Joi.string().required().label("Last Name"),
-    email: Joi.string().email().required().label("Email"),
-    password: passwordComplexity().required().label("Password"),
+    firstName: Joi.string().required().label("First Name").messages({
+      "string.empty": `Imię jest wymagane.`,
+    }),
+    lastName: Joi.string().required().label("Last Name").messages({
+      "string.empty": `Nazwisko jest wymagane.`,
+    }),
+    password: passwordComplexity().required().label("Password").messages({
+      "string.empty": `Hasło jest wymagane.`,
+    }),
+    email: Joi.string().email().required().label("Email").messages({
+      "string.empty": `Email jest wymagany.`,
+    }),
   });
   return schema.validate(data);
 };

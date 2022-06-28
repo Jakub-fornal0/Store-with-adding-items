@@ -30,3 +30,14 @@ export const RegisterButton = styled.button`
     border-color: #277a5c;
   }
 `;
+
+export const Error = styled.div`
+  width: 370px;
+  padding: 15px;
+  margin: 5px 0;
+  font-size: 14px;
+  background-color: #f34646;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+`;

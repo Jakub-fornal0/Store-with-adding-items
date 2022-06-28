@@ -31,7 +31,7 @@ export const ALogo = styled.a`
   font-size: 19px;
 `;
 
-export const ANav = styled.a`
+export const ANav = styled.span`
   color: white;
   display: block;
   line-height: 3em;
