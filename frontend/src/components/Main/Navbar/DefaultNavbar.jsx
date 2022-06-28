@@ -1,6 +1,7 @@
 import { Nav, Ul, Li, ALogo, ANav } from "./DefaultNavbar.style";
 import { BsPerson } from "react-icons/bs";
 import { FiPackage } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const DefaultNavbar = () => {
   return (
@@ -32,9 +33,11 @@ const DefaultNavbar = () => {
             Zaloguj się
           </ANav>
         </Li>
-        <Li>
-          <ANav>Rejestracja</ANav>
-        </Li>
+        <Link to="/signup">
+          <Li>
+            <ANav>Rejestracja</ANav>
+          </Li>
+        </Link>
       </Ul>
     </Nav>
   );

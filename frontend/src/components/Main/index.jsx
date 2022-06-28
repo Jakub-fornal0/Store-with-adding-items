@@ -5,7 +5,7 @@ import LoggedNavbar from "./Navbar/LoggedNavbar";
 const Main = () => {
   return (
     <Main_container>
-      <LoggedNavbar></LoggedNavbar>
+      <DefaultNavbar></DefaultNavbar>
     </Main_container>
   );
 };
