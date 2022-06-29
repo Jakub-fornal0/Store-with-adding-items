@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   Main_container,
   Form,
-  RegisterButton,
+  LoginButton,
   Error,
-  RegisterH1,
-} from "./RegisterForm.style";
+  LoginH1,
+} from "./LoginForm.style";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";
@@ -18,25 +17,17 @@ import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 
-const RegisterForm = () => {
-  const [data, setData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
-
+const LoginForm = () => {
+  const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-
-  const navigate = useNavigate();
-
-  const [values, setValues] = useState({
-    showPassword: false,
-  });
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
+
+  const [values, setValues] = useState({
+    showPassword: false,
+  });
 
   const handleClickShowPassword = () => {
     setValues({
@@ -52,15 +43,15 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:8080/api/users";
       const headers = {
         "Content-Type": "application/json",
       };
+      const url = "http://localhost:8080/api/auth";
       const { data: res } = await axios.post(url, data, {
         headers: headers,
       });
-      navigate("/login");
-      console.log(res.message);
+      localStorage.setItem("token", res.data);
+      window.location = "/";
     } catch (error) {
       if (
         error.response &&
@@ -87,7 +78,7 @@ const RegisterForm = () => {
               width: "30%",
             }}
           >
-            <RegisterH1>REJESTRACJA</RegisterH1>
+            <LoginH1>Logowanie</LoginH1>
           </Grid>
           <Grid
             item
@@ -96,35 +87,15 @@ const RegisterForm = () => {
             }}
           >
             <TextField
-              id="firstName"
-              name="firstName"
-              label="Imię"
+              id="email"
+              name="email"
+              label="Email"
               variant="outlined"
               onChange={handleChange}
-              value={data.firstName}
-              sx={{
-                marginTop: "30px",
-                marginBottom: "15px",
-                width: "100%",
-              }}
-            />
-          </Grid>
-          <Grid
-            item
-            sx={{
-              width: "30%",
-            }}
-          >
-            <TextField
-              id="lastName"
-              name="lastName"
-              label="Nazwisko"
-              variant="outlined"
-              onChange={handleChange}
-              value={data.lastName}
+              value={data.email}
               sx={{
                 marginTop: "15px",
-                marginBottom: "15px",
+                marginBottom: "30px",
                 width: "100%",
               }}
             />
@@ -168,33 +139,13 @@ const RegisterForm = () => {
               />
             </FormControl>
           </Grid>
-          <Grid
-            item
-            sx={{
-              width: "30%",
-            }}
-          >
-            <TextField
-              id="email"
-              name="email"
-              label="Email"
-              variant="outlined"
-              onChange={handleChange}
-              value={data.email}
-              sx={{
-                marginTop: "15px",
-                marginBottom: "30px",
-                width: "100%",
-              }}
-            />
-          </Grid>
           <Grid item>{error && <Error>{error}</Error>}</Grid>
           <Grid item>
-            <RegisterButton type="submit">Zarejestruj się</RegisterButton>
+            <LoginButton type="submit">Zaloguj się</LoginButton>
           </Grid>
         </Grid>
       </Form>
     </Main_container>
   );
 };
-export default RegisterForm;
+export default LoginForm;

@@ -12,7 +12,7 @@ export const Form = styled.form`
   width: 100vw;
 `;
 
-export const RegisterButton = styled.button`
+export const LoginButton = styled.button`
   width: 15vw;
   padding: 15px;
   font-weight: bold;
@@ -42,7 +42,7 @@ export const Error = styled.div`
   text-align: center;
 `;
 
-export const RegisterH1 = styled.h1`
+export const LoginH1 = styled.h1`
   text-align: center;
   font-weight: lighter;
 `;

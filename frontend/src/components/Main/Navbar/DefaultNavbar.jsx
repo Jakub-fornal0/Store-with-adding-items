@@ -20,19 +20,21 @@ const DefaultNavbar = () => {
             DELiVER
           </ALogo>
         </Li>
-        <Li>
-          <ANav>
-            <BsPerson
-              style={{
-                paddingRight: "5px",
-                marginBottom: "-3px",
-                fontSize: "24px",
-                strokeWidth: "1",
-              }}
-            ></BsPerson>
-            Zaloguj się
-          </ANav>
-        </Li>
+        <Link to="/login">
+          <Li>
+            <ANav>
+              <BsPerson
+                style={{
+                  paddingRight: "5px",
+                  marginBottom: "-3px",
+                  fontSize: "24px",
+                  strokeWidth: "1",
+                }}
+              ></BsPerson>
+              Zaloguj się
+            </ANav>
+          </Li>
+        </Link>
         <Link to="/signup">
           <Li>
             <ANav>Rejestracja</ANav>
