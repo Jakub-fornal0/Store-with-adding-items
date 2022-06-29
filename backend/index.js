@@ -27,11 +27,13 @@ connection();
 
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
+const itemRoutes = require("./routes/items");
 // routes
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 
 app.use(tokenVerification);
+app.use("/api/items", itemRoutes);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Nasłuchiwanie na porcie ${port}`));

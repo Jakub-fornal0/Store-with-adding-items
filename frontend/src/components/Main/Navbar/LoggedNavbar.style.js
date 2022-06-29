@@ -47,7 +47,7 @@ export const ANav = styled.a`
   }
 `;
 
-export const AAdd = styled.a`
+export const AAdd = styled.span`
   background-color: white;
   color: #277a5c;
   display: block;

@@ -3,6 +3,7 @@ import { BiMessageSquare } from "react-icons/bi";
 import { FiPackage } from "react-icons/fi";
 import { BsPerson } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const LoggedNavbar = () => {
   return (
@@ -58,9 +59,11 @@ const LoggedNavbar = () => {
             Twoje konto
           </ANav>
         </Li>
-        <Li>
-          <AAdd>Dodaj ogłoszenie</AAdd>
-        </Li>
+        <Link to="/addadvertisement">
+          <Li>
+            <AAdd>Dodaj ogłoszenie</AAdd>
+          </Li>
+        </Link>
       </Ul>
     </Nav>
   );
