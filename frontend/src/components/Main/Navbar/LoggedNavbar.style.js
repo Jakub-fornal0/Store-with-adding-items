@@ -59,7 +59,7 @@ export const AAdd = styled.span`
   text-decoration: none;
   font-weight: bold;
   font-size: 17px;
-  transition: 0.7s ease-in-out;
+  transition: 0.4s ease-in-out;
   cursor: pointer;
   border-style: solid;
   border-radius: 10px;

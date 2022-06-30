@@ -22,7 +22,7 @@ export const AddButton = styled.button`
   border-color: #277a5c;
   color: white;
   cursor: pointer;
-  transition: 0.7s ease-in-out;
+  transition: 0.4s ease-in-out;
 
   &:hover {
     color: #277a5c;
@@ -32,8 +32,8 @@ export const AddButton = styled.button`
 `;
 
 export const Error = styled.div`
-  width: 370px;
-  padding: 15px;
+  width: 100%;
+  padding: 15px 0;
   margin: 5px 0;
   font-size: 14px;
   background-color: #f34646;

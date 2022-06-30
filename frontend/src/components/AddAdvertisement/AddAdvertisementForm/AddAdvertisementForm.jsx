@@ -44,8 +44,27 @@ const AddAdvertisementForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setData({ ...data, category: category });
     console.log(data);
+    try {
+      const url = "http://localhost:8080/api/items/addItem";
+      const token = localStorage.getItem("token");
+      const headers = {
+        "Content-Type": "application/json",
+        "x-access-token": token,
+      };
+      const { message: res } = await axios.post(url, data, {
+        headers: headers,
+      });
+      console.log(res.message);
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+      }
+    }
   };
 
   const categories = [
@@ -198,7 +217,13 @@ const AddAdvertisementForm = () => {
               }}
             />
           </Grid>
-          <Grid item lg={12}>
+          <Grid
+            item
+            lg={12}
+            sx={{
+              width: "30%",
+            }}
+          >
             {error && <Error>{error}</Error>}
           </Grid>
           <Grid

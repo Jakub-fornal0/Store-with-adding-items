@@ -3,7 +3,7 @@ const ObjectId = require("mongodb").ObjectID;
 const Joi = require("joi");
 
 const itemSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  itemName: { type: String, required: true },
   price: { type: String, required: true },
   date: { type: String, required: true },
   description: { type: String, required: true },
@@ -17,14 +17,11 @@ const Item = mongoose.model("Item", itemSchema);
 
 const validate = (data) => {
   const schema = Joi.object({
-    name: Joi.string().required().label("Name").messages({
+    itemName: Joi.string().required().label("Name").messages({
       "string.empty": `Nazwa jest wymagana.`,
     }),
-    price: Joi.Double().required().label("Price").messages({
+    price: Joi.string().required().label("Price").messages({
       "string.empty": `Cena jest wymagana.`,
-    }),
-    date: Joi.string().required().label("Date").messages({
-      "string.empty": `Data jest wymagana.`,
     }),
     description: Joi.string().required().label("Description").messages({
       "string.empty": `Opis jest wymagany.`,

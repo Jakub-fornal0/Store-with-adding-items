@@ -6,6 +6,7 @@ const tokenVerification = require("./middleware/tokenVerification");
 
 app.use(express.json());
 app.use(cors());
+app.use("/public", express.static("public"));
 
 function setupCORS(req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
